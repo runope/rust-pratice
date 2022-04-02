@@ -14,13 +14,13 @@ impl Actor for Calculator {
 }
 
 // now we need to implement `Handler` on `Calculator` for the `Sum` message.
-// impl Handler<Sum> for Calculator {
-//     type Result = usize; // <- Message response type
+impl Handler<Sum> for Calculator {
+    type Result = usize; // <- Message response type
 
-//     fn handle(&mut self, msg: Sum, ctx: &mut Context<Self>) -> Self::Result {
-//         msg.0 + msg.1
-//     }
-// }
+    fn handle(&mut self, msg: Sum, ctx: &mut Context<Self>) -> Self::Result {
+        msg.0 + msg.1
+    }
+}
 
 #[actix::main] // <- starts the system and block until future resolves
 async fn main() {
